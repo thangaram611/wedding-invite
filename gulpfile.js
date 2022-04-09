@@ -1,15 +1,15 @@
 'use strict';
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
+const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
 
 // compile scss to css
 gulp.task('sass', function () {
     return gulp.src('./sass/styles.scss')
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-        .pipe(rename({basename: 'styles.min'}))
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(rename({ basename: 'styles.min' }))
         .pipe(gulp.dest('./css'));
 });
 
@@ -22,7 +22,7 @@ gulp.task('sass:watch', function () {
 gulp.task('minify-js', function () {
     return gulp.src('./js/scripts.js')
         .pipe(uglify())
-        .pipe(rename({basename: 'scripts.min'}))
+        .pipe(rename({ basename: 'scripts.min' }))
         .pipe(gulp.dest('./js'));
 });
 

@@ -37,14 +37,14 @@
 
 	<!-- Styles -->
 	<link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.css">
-    <link rel="stylesheet" href="css/flexslider.css">
-    <link rel="stylesheet" href="css/styles.min.css">
-    <link rel="stylesheet" href="css/queries.css">
-    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/jquery.fancybox.css">
+	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="css/styles.min.css">
+	<link rel="stylesheet" href="css/queries.css">
+	<link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
+	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+	<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
 	<!-- Javscript -->
 	<script>
@@ -91,18 +91,29 @@
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="hero-content text-center">
-						<!--<h1>Ram and Antara</h1>-->
-						<img src="img/logo-lg.png">
-						<!--<p class="intro">Ram & Antara are getting hitched!</p>-->
-						<!--<a href="#" class="btn btn-fill btn-large btn-margin-right">Scroll Down</a> -->
+						<p class="heart">
+							<i class="fa fa-heart fa-4x fa-beat"></i>
+						</p>
+						<ul id="countdown">
+							<li id="days">
+								<div class="number">00</div>
+								<div class="label">Days</div>
+							</li>
+							<li id="hours">
+								<div class="number">00</div>
+								<div class="label">Hours</div>
+							</li>
+							<li id="minutes">
+								<div class="number">00</div>
+								<div class="label">Minutes</div>
+							</li>
+							<li id="seconds">
+								<div class="number">00</div>
+								<div class="label">Seconds</div>
+							</li>
+						</ul>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4 hidden-xs"></div>
-				<div class="col-sm-4 hidden-xs text-center"><a href="#rsvp"
-						class="btn btn-accent btn-large rsvp-btn">RSVP</a></div>
-				<div class="col-sm-4 hidden-xs"></div>
 			</div>
 		</div>
 		<div class="down-arrow floating-arrow"><a href="#invitation"><i class="fa fa-angle-down"></i></a></div>
@@ -163,50 +174,123 @@
 					<h3 class="header">Events</h3>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12 col-xs-12 leftcol">
-					<div class="wp3">
-						<p><strong>27th November</strong></p>
-
-						<h5>Mehndi <span class="time">1PM - 5PM</span></h5>
-						<p>It's one of the oldest traditional Indian pre wedding ceremony where the bride and groom
-							attend the event together and a professional mehndi artist applies
-							mehndi to the bride's hands and feet. This will be having a celebratory
-							festival feel to it with people wearing vibrant clothes and dancing, singing, playing
-							games and a lot more.</p>
-					</div>
-					<div class="wp5">
-						<h5>Cocktail Night <span class="time">7PM - 12AM</span></h5>
-						<p>This event is no way close to ethnic. The bride & groom would like to have some "shots before
-							the
-							knot". With booze flowing down the floor and the western attire on, everyone would be busy
-							showing off their new moves on the stage which they have finely honed. Lastly, expect some
-							beer
-							pong matches & karaoke for sure.</p>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-12 col-xs-12 rightcol">
-					<div class="wp4">
-						<p><strong>28th November</strong></p>
-
-						<h5>Haldi <span class="time">10AM-11AM</span></h5>
-						<p>The haldi ceremony is usually held separately for the bride and the groom. This one is for
-							the
-							bride. It is a low-key event that involves the application of turmeric paste on the hands,
-							legs
-							and face of the bride. The groom is not allowed to see the bride after this ritual until the
-							final wedding ceremony starts.</p>
-					</div>
-					<div class="wp6">
-						<h5>Wedding <span class="time">6PM-12AM</span></h5>
-						<p>This is the main event in the entire wedding when the bride and the groom tie the
-							knot. The groom comes with the barat and is greeted by the bride side with some dhol of
-							course
-							as maximum number of guests would be attending this event. This is when the couple circle
-							the
-							sacred fire and are finally declared husband and wife.</p>
-					</div>
-				</div>
+			<div class="row timeline-container text-center">
+				<ul class="timeline">
+					<li>
+						<h3>2001</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+							incididunt ut
+							labore et dolore magna aliqua.</p>
+					</li>
+					<li>
+						<h3>2002</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat. </p>
+					</li>
+					<li>
+						<h3>2003</h3>
+						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+							nulla
+							pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+							deserunt
+							mollit anim id est laborum.</p>
+					</li>
+					<li>
+						<h3>2004</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+							incididunt ut
+							labore et dolore magna aliqua.</p>
+					</li>
+					<li>
+						<h3>2005</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat. </p>
+					</li>
+					<li>
+						<h3>2006</h3>
+						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+							nulla
+							pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+							deserunt
+							mollit anim id est laborum.</p>
+					</li>
+					<li>
+						<h3>2007</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+							incididunt ut
+							labore et dolore magna aliqua.</p>
+					</li>
+					<li>
+						<h3>2008</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat. </p>
+					</li>
+					<li>
+						<h3>2009</h3>
+						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+							nulla
+							pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+							deserunt
+							mollit anim id est laborum.</p>
+					</li>
+					<li>
+						<h3>2010</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+							incididunt ut
+							labore et dolore magna aliqua.</p>
+					</li>
+					<li>
+						<h3>2011</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat. </p>
+					</li>
+					<li>
+						<h3>2012</h3>
+						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+							nulla
+							pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+							deserunt
+							mollit anim id est laborum.</p>
+					</li>
+					<li>
+						<h3>2013</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+							incididunt ut
+							labore et dolore magna aliqua.</p>
+					</li>
+					<li>
+						<h3>2014</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat. </p>
+					</li>
+					<li>
+						<h3>2015</h3>
+						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+							nulla
+							pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+							deserunt
+							mollit anim id est laborum.</p>
+					</li>
+					<li>
+						<h3>2016</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+							incididunt ut
+							labore et dolore magna aliqua.</p>
+					</li>
+					<li>
+						<h3>2017</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+							commodo consequat. </p>
+					</li>
+					<li>
+						<h3>2018</h3>
+						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+							nulla
+							pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+							deserunt
+							mollit anim id est laborum.</p>
+					</li>
+				</ul>
 			</div>
 			<div class="row section-padding">
 				<div class="col-md-4 col-md-offset-4 text-center">
@@ -506,8 +590,9 @@
 		</div>
 	</footer>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script> -->
 	<script src="js/jquery.fancybox.pack.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/jquery.flexslider-min.js"></script>

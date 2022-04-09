@@ -241,7 +241,7 @@ $(document).ready(function () {
 
 // Google map
 function initMap() {
-    var location = {lat: 22.5932759, lng: 88.27027720000001};
+    var location = { lat: 22.5932759, lng: 88.27027720000001 };
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 15,
         center: location,
@@ -255,7 +255,7 @@ function initMap() {
 }
 
 function initBBSRMap() {
-    var la_fiesta = {lat: 20.305826, lng: 85.85480189999998};
+    var la_fiesta = { lat: 20.305826, lng: 85.85480189999998 };
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 15,
         center: la_fiesta,
@@ -491,3 +491,114 @@ var MD5 = function (string) {
 
     return temp.toLowerCase();
 };
+
+/** Counter */
+/* --------------------------
+ * GLOBAL VARS
+ * -------------------------- */
+// The date you want to count down to
+var targetDate = new Date("2022/06/03 10:30:00");
+
+// Other date related variables
+var days;
+var hrs;
+var min;
+var sec;
+
+/* --------------------------
+ * ON DOCUMENT LOAD
+ * -------------------------- */
+$(function () {
+    console.log("document is loading")
+    // Calculate time until launch date
+    timeToLaunch();
+    // Transition the current countdown from 0 
+    numberTransition('#days .number', days, 1000, 'easeOutQuad');
+    numberTransition('#hours .number', hrs, 1000, 'easeOutQuad');
+    numberTransition('#minutes .number', min, 1000, 'easeOutQuad');
+    numberTransition('#seconds .number', sec, 1000, 'easeOutQuad');
+    // Begin Countdown
+    setTimeout(countDownTimer, 1001);
+});
+
+/* --------------------------
+ * FIGURE OUT THE AMOUNT OF 
+   TIME LEFT BEFORE LAUNCH
+ * -------------------------- */
+function timeToLaunch() {
+    // Get the current date
+    var currentDate = new Date();
+
+    // Find the difference between dates
+    var diff = (currentDate - targetDate) / 1000;
+    var diff = Math.abs(Math.floor(diff));
+
+    // Check number of days until target
+    days = Math.floor(diff / (24 * 60 * 60));
+    sec = diff - days * 24 * 60 * 60;
+
+    // Check number of hours until target
+    hrs = Math.floor(sec / (60 * 60));
+    sec = sec - hrs * 60 * 60;
+
+    // Check number of minutes until target
+    min = Math.floor(sec / (60));
+    sec = sec - min * 60;
+}
+
+/* --------------------------
+ * DISPLAY THE CURRENT 
+   COUNT TO LAUNCH
+ * -------------------------- */
+function countDownTimer() {
+
+    // Figure out the time to launch
+    timeToLaunch();
+
+    // Write to countdown component
+    $("#days .number").text(days);
+    $("#hours .number").text(hrs);
+    $("#minutes .number").text(min);
+    $("#seconds .number").text(sec);
+
+    // Repeat the check every second
+    setTimeout(countDownTimer, 1000);
+}
+
+/* --------------------------
+ * TRANSITION NUMBERS FROM 0
+   TO CURRENT TIME UNTIL LAUNCH
+ * -------------------------- */
+function numberTransition(id, endPoint, transitionDuration, transitionEase) {
+    // Transition numbers from 0 to the final number
+    $({ numberCount: $(id).text() }).animate({ numberCount: endPoint }, {
+        duration: transitionDuration,
+        easing: transitionEase,
+        step: function () {
+            $(id).text(Math.floor(this.numberCount));
+        },
+        complete: function () {
+            $(id).text(this.numberCount);
+        }
+    });
+};
+
+$(document).ready(function () {
+    const timelineContainer = $('.row.timeline-container');
+    function timeline() {
+        const threshold_position = timelineContainer.scrollTop() + timelineContainer.innerHeight() * 2 / 3;
+        //compare scrolltop with scrolltop on each timeline event
+        const timeline_events = timelineContainer.find('li');
+        for (i in timeline_events) {
+            if (timeline_events[i].classList) {
+                if (timeline_events[i].offsetTop < threshold_position) {
+                    timeline_events[i].classList.add('visible');
+                } else {
+                    timeline_events[i].classList.remove('visible');
+                }
+            }
+        }
+    }
+    timelineContainer.on('scroll', timeline);
+    timeline();
+});
