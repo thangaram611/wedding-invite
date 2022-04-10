@@ -3,12 +3,12 @@ $(document).ready(function () {
     /***************** Waypoints ******************/
 
     $('.wp1').waypoint(function () {
-        $('.wp1').addClass('animated fadeInLeft');
+        $('.wp1').addClass('animated bounceInLeft');
     }, {
         offset: '75%'
     });
     $('.wp2').waypoint(function () {
-        $('.wp2').addClass('animated fadeInRight');
+        $('.wp2').addClass('animated bounceInRight');
     }, {
         offset: '75%'
     });
@@ -38,12 +38,12 @@ $(document).ready(function () {
         offset: '75%'
     });
     $('.wp8').waypoint(function () {
-        $('.wp8').addClass('animated fadeInLeft');
+        $('.wp8').addClass('animated bounceInLeft');
     }, {
         offset: '75%'
     });
     $('.wp9').waypoint(function () {
-        $('.wp9').addClass('animated fadeInRight');
+        $('.wp9').addClass('animated bounceInRight');
     }, {
         offset: '75%'
     });
@@ -93,7 +93,7 @@ $(document).ready(function () {
                 $('section.navigation').addClass('fixed');
                 $('header').css({
                     "border-bottom": "none",
-                    "padding": "35px 0"
+                    "padding": "20px 0"
                 });
                 $('header .member-actions').css({
                     "top": "26px",
@@ -101,17 +101,23 @@ $(document).ready(function () {
                 $('header .navicon').css({
                     "top": "34px",
                 });
+                $('header .logo img').css({
+                    "height": "40px",
+                });
             } else {
                 $('section.navigation').removeClass('fixed');
                 $('header').css({
                     "border-bottom": "solid 1px rgba(255, 255, 255, 0.2)",
-                    "padding": "50px 0"
+                    "padding": "35px 0"
                 });
                 $('header .member-actions').css({
                     "top": "41px",
                 });
                 $('header .navicon').css({
                     "top": "48px",
+                });
+                $('header .logo img').css({
+                    "height": "60px",
                 });
             }
         });
@@ -146,7 +152,6 @@ $(document).ready(function () {
             '<iframe src="https://www.facebook.com/plugins/share_button.php?href=' + encodeURIComponent(window.location) + '&layout=button_count&size=small&width=105&height=21&appId" width="105" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>';
 
         share_bar[i].innerHTML = html;
-        share_bar[i].style.display = 'inline-block';
     }
 
     /********************** Embed youtube video *********************/
@@ -161,66 +166,6 @@ $(document).ready(function () {
     $('#btn-show-content').click(function () {
         $('#map-content').toggleClass('toggle-map-content');
         $('#btn-show-content').toggleClass('toggle-map-content');
-    });
-
-    /********************** Add to Calendar **********************/
-    var myCalendar = createCalendar({
-        options: {
-            class: '',
-            // You can pass an ID. If you don't, one will be generated for you
-            id: ''
-        },
-        data: {
-            // Event title
-            title: "Ram and Antara's Wedding",
-
-            // Event start date
-            start: new Date('Nov 27, 2017 10:00'),
-
-            // Event duration (IN MINUTES)
-            // duration: 120,
-
-            // You can also choose to set an end time
-            // If an end time is set, this will take precedence over duration
-            end: new Date('Nov 29, 2017 00:00'),
-
-            // Event Address
-            address: 'ITC Fortune Park Hotel, Kolkata',
-
-            // Event Description
-            description: "We can't wait to see you on our big day. For any queries or issues, please contact Mr. Amit Roy at +91 9876543210."
-        }
-    });
-
-    $('#add-to-cal').html(myCalendar);
-
-
-    /********************** RSVP **********************/
-    $('#rsvp-form').on('submit', function (e) {
-        e.preventDefault();
-        var data = $(this).serialize();
-
-        $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
-
-        if (MD5($('#invite_code').val()) !== 'b0e53b10c1f55ede516b240036b88f40'
-            && MD5($('#invite_code').val()) !== '2ac7f43695eb0479d5846bb38eec59cc') {
-            $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
-        } else {
-            $.post('https://script.google.com/macros/s/AKfycbzUqz44wOat0DiGjRV1gUnRf4HRqlRARWggjvHKWvqniP7eVDG-/exec', data)
-                .done(function (data) {
-                    console.log(data);
-                    if (data.result === "error") {
-                        $('#alert-wrapper').html(alert_markup('danger', data.message));
-                    } else {
-                        $('#alert-wrapper').html('');
-                        $('#rsvp-modal').modal('show');
-                    }
-                })
-                .fail(function (data) {
-                    console.log(data);
-                    $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. '));
-                });
-        }
     });
 
 });
@@ -571,22 +516,74 @@ function numberTransition(id, endPoint, transitionDuration, transitionEase) {
     });
 };
 
-$(document).ready(function () {
-    const timelineContainer = $('.row.timeline-container');
-    function timeline() {
-        const threshold_position = timelineContainer.scrollTop() + timelineContainer.innerHeight() * 2 / 3;
-        //compare scrolltop with scrolltop on each timeline event
-        const timeline_events = timelineContainer.find('li');
-        for (i in timeline_events) {
-            if (timeline_events[i].classList) {
-                if (timeline_events[i].offsetTop < threshold_position) {
-                    timeline_events[i].classList.add('visible');
-                } else {
-                    timeline_events[i].classList.remove('visible');
-                }
-            }
+$.fn.isInViewport = function (container = $(window)) {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+
+    var viewportTop = container.offset().top;
+    var viewportBottom = viewportTop + container.height();
+    return elementBottom > viewportTop + 200 && elementTop < viewportBottom - 200;
+};
+
+var swiper = new Swiper('.blog-slider', {
+    spaceBetween: 30,
+    effect: 'fade',
+    loop: true,
+    mousewheel: {
+        invert: false,
+        releaseOnEdges: true
+    },
+    // autoHeight: true,
+    pagination: {
+        el: '.blog-slider__pagination',
+        clickable: true
+    },
+    direction: 'vertical',
+    preventClicks: false
+});
+
+async function init() {
+    const node = document.querySelector("#type-text");
+
+    await sleep(1000);
+    node.innerText = "";
+    await node.type("❤️ We are getting, ");
+
+    while (true) {
+        await node.type("Married! ❤️");
+        await sleep(2000);
+        await node.delete("Married! ❤️");
+        await node.type("Engaged! ❤️");
+        await sleep(2000);
+        await node.delete("Engaged! ❤️");
+    }
+}
+
+// Source code 🚩
+
+const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));
+
+class TypeAsync extends HTMLSpanElement {
+    get typeInterval() {
+        const randomMs = 200 * Math.random();
+        return randomMs < 50 ? 10 : randomMs;
+    }
+
+    async type(text) {
+        for (let character of text) {
+            this.innerText += character;
+            await sleep(this.typeInterval);
         }
     }
-    timelineContainer.on('scroll', timeline);
-    timeline();
-});
+
+    async delete(text) {
+        for (let character of text) {
+            this.innerText = this.innerText.slice(0, this.innerText.length - 1);
+            await sleep(this.typeInterval);
+        }
+    }
+}
+
+customElements.define("type-async", TypeAsync, { extends: "span" });
+
+init();
