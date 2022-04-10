@@ -497,9 +497,9 @@ $.fn.isInViewport = function (container = $(window)) {
 };
 
 var swiper = new Swiper('.blog-slider', {
-    spaceBetween: 30,
+    spaceBetween: 40,
     effect: 'fade',
-    loop: true,
+    loop: false,
     mousewheel: {
         invert: false,
         releaseOnEdges: true
@@ -509,7 +509,6 @@ var swiper = new Swiper('.blog-slider', {
         el: '.blog-slider__pagination',
         clickable: true
     },
-    direction: 'vertical',
     preventClicks: false
 });
 
