@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,300,400italic,300italic,700,700italic);
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,300,700);
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 // Imports
 //@import "compass";
 @import "partials/typography";
@@ -1136,8 +1137,8 @@ p.heart {
 }
 
 #type-text {
-  font-family: "Open Sans", sans-serif;
-  font-size: 3vw;
+  font-family: 'Pacifico', cursive, sans-serif;
+  font-size: $font-size-h2;
   font-weight: 500;
   color: black;
 }
@@ -1152,26 +1153,6 @@ p.heart {
   to {
     visibility: hidden;
   }
-}
-
-.hit-the-floor {
-  color: #fff;
-  font-size: 3em;
-  font-weight: bold;
-  font-family: "Open Sans", sans-serif;
-  text-shadow:
-    0 1px 0 #ccc,
-    0 2px 0 #c9c9c9,
-    0 3px 0 #bbb,
-    0 4px 0 #b9b9b9,
-    0 5px 0 #aaa,
-    0 6px 1px rgba(0, 0, 0, .1),
-    0 0 5px rgba(0, 0, 0, .1),
-    0 1px 3px rgba(0, 0, 0, .3),
-    0 3px 5px rgba(0, 0, 0, .2),
-    0 5px 10px rgba(0, 0, 0, .25),
-    0 10px 10px rgba(0, 0, 0, .2),
-    0 20px 20px rgba(0, 0, 0, .15);
 }
 
 .animated {
@@ -1435,7 +1416,6 @@ p.heart {
     flex-shrink: 0;
     height: 300px;
     background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 30%);
-    box-shadow: 4px 13px 30px 1px rgba(252, 56, 56, 0.2);
     border-radius: 20px;
     transform: translateX(-80px);
 
@@ -1529,7 +1509,6 @@ p.heart {
   &__button {
     display: inline-flex;
     background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
-    box-shadow: 0px 14px 80px rgba(252, 56, 56, 0.4);
     padding: 15px 35px;
     border-radius: 50px;
     color: #fff;
@@ -1631,6 +1610,10 @@ p.heart {
       }
     }
   }
+}
+
+.blog-slider__item.swiper-slide:first-child > .blog-slider__img {
+  box-shadow: 4px 13px 30px 1px rgba(252, 56, 56, 0.2);
 }
 
 .slider-container {
