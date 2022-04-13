@@ -146,10 +146,10 @@ $(document).ready(function () {
     const share_bar = document.getElementsByClassName('share-bar');
     for (let i = 0; i < share_bar.length; i++) {
         const html = '<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
-            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;via=ramswarooppatra&amp;hashtags=ramandantara&amp;count=horizontal"' +
+            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;via=thangaram611&amp;hashtags=RashmiThangaram,wedding,invite&amp;count=horizontal"' +
             'style="width:105px; height:21px;">' +
             '</iframe>' +
-            '<iframe src="https://www.facebook.com/plugins/share_button.php?href=' + encodeURIComponent(window.location) + '&layout=button_count&size=small&width=105&height=21&appId" width="105" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>';
+            '<iframe allowtransparency="true" frameborder="0" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=' + encodeURIComponent(window.location) + '&layout=button_count&size=small&width=105&height=21&appId" width="105" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>';
 
         share_bar[i].innerHTML = html;
     }
