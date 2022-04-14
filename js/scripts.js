@@ -160,13 +160,13 @@ $(document).ready(function () {
 
 
     /********************** Toggle Map Content **********************/
-    $('#btn-show-map').click(function () {
-        $('#map-content').toggleClass('toggle-map-content');
-        $('#btn-show-content').toggleClass('toggle-map-content');
+    $('.btn-show-map').on('click', function () {
+        $(this).parents('.map-content').first().toggleClass('toggle-map-content');
+        $(this).parents('.container').first().find('.btn-show-content').toggleClass('toggle-map-content');
     });
-    $('#btn-show-content').click(function () {
-        $('#map-content').toggleClass('toggle-map-content');
-        $('#btn-show-content').toggleClass('toggle-map-content');
+    $('.btn-show-content').on('click', function () {
+        $(this).parents('.container').first().find('.map-content').toggleClass('toggle-map-content');
+        $(this).toggleClass('toggle-map-content');
     });
 
 });
