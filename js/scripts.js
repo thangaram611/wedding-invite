@@ -126,15 +126,15 @@ $(document).ready(function () {
 
     $(function () {
 
-        $('a[href*=#]:not([href=#])').click(function () {
+        $("a[href*='#'][href!='#']").on('click', function () {
             if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
 
                 var target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
                 if (target.length) {
                     $('html,body').animate({
-                        scrollTop: target.offset().top - 90
-                    }, 2000);
+                        scrollTop: target.offset().top - 80
+                    }, 1000);
                     return false;
                 }
             }
@@ -145,11 +145,12 @@ $(document).ready(function () {
     /********************** Social Share buttons ***********************/
     const share_bar = document.getElementsByClassName('share-bar');
     for (let i = 0; i < share_bar.length; i++) {
-        const html = '<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
-            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;via=thangaram611&amp;hashtags=RashmiThangaram,wedding,invite&amp;count=horizontal"' +
-            'style="width:105px; height:21px;">' +
+        const html = '<iframe allowtransparency="true" frameborder="0" scrolling="no" ' +
+            'title="Twitter share button"'+
+            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;via=thangaram611&amp;hashtags=RashmiThangaram,wedding,invite&amp;count=horizontal" ' +
+            'style="width:105px; height:21px;"> ' +
             '</iframe>' +
-            '<iframe allowtransparency="true" frameborder="0" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=' + encodeURIComponent(window.location) + '&layout=button_count&size=small&width=105&height=21&appId" width="105" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>';
+            '<iframe title="Facebook share button" allowtransparency="true" frameborder="0" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=' + encodeURIComponent(window.location) + '&layout=button_count&size=small&width=105&height=21&appId" width="105" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>';
 
         share_bar[i].innerHTML = html;
     }
