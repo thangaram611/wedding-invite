@@ -169,6 +169,7 @@ $(document).ready(function () {
         $(this).toggleClass('toggle-map-content');
     });
 
+    initType();
 });
 
 /********************** Extras **********************/
@@ -513,20 +514,20 @@ var swiper = new Swiper('.blog-slider', {
     preventClicks: false
 });
 
-async function init() {
+async function initType() {
     const node = document.querySelector("#type-text");
 
     await sleep(1000);
     node.innerText = "";
-    await node.type("❤️ We are getting, ");
+    await typeText(node, "❤️ We are getting, ");
 
     while (true) {
-        await node.type("Married! ❤️");
+        await typeText(node, "Married! ❤️");
         await sleep(2000);
-        await node.delete("Married! ❤️");
-        await node.type("Engaged! ❤️");
+        await deleteText(node, "Married! ❤️");
+        await typeText(node, "Engaged! ❤️");
         await sleep(2000);
-        await node.delete("Engaged! ❤️");
+        await deleteText(node, "Engaged! ❤️");
     }
 }
 
@@ -534,27 +535,21 @@ async function init() {
 
 const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
-class TypeAsync extends HTMLSpanElement {
-    get typeInterval() {
-        const randomMs = 200 * Math.random();
-        return randomMs < 50 ? 10 : randomMs;
-    }
+function typeInterval() {
+    const randomMs = 200 * Math.random();
+    return randomMs < 50 ? 10 : randomMs;
+}
 
-    async type(text) {
-        for (let character of text) {
-            this.innerText += character;
-            await sleep(this.typeInterval);
-        }
-    }
-
-    async delete(text) {
-        for (let character of text) {
-            this.innerText = this.innerText.slice(0, this.innerText.length - 1);
-            await sleep(this.typeInterval);
-        }
+async function typeText(e, text) {
+    for (let character of text) {
+        e.innerText += character;
+        await sleep(typeInterval());
     }
 }
 
-customElements.define("type-async", TypeAsync, { extends: "span" });
-
-init();
+async function deleteText(e, text) {
+    for (let character of text) {
+        e.innerText = e.innerText.slice(0, e.innerText.length - 1);
+        await sleep(typeInterval());
+    }
+}
