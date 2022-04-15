@@ -71,13 +71,13 @@ $(document).ready(function () {
     /***************** Nav Transformicon ******************/
 
     /* When user clicks the Icon */
-    $('.nav-toggle').click(function () {
+    $('.nav-toggle').on('click', function (e) {
         $(this).toggleClass('active');
         $('.header-nav').toggleClass('open');
-        event.preventDefault();
+        e.preventDefault();
     });
     /* When user clicks a link */
-    $('.header-nav li a').click(function () {
+    $('.header-nav li a').on('click', function () {
         $('.nav-toggle').toggleClass('active');
         $('.header-nav').toggleClass('open');
 
