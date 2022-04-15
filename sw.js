@@ -21,7 +21,8 @@ self.addEventListener("install", event => {
 				"/wedding-invite/favicon-16x16.png", // Favicon, default
 				"/wedding-invite/favicon-32x32.png", // Favicon, Safari on Mac OS
 				"/wedding-invite/index.html", // Main HTML file
-				"/wedding-invite/logo.png", // Logo
+				"/wedding-invite/img/logo.png", // Logo
+				"/wedding-invite/img/hero-min.webp", // hero
 				"/wedding-invite/js/scripts.min.js", // Main Javascript file
 				"/wedding-invite/manifest.json", // Manifest file
 				"/wedding-invite/maskable_icon.png", // Favicon, maskable https://web.dev/maskable-icon
