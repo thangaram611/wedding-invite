@@ -1,4 +1,5 @@
-const cacheName = "cache"; // Change value to force update
+const cacheName = "cachev1"; // Change value to force update
+let deferredPrompt;
 
 self.addEventListener("install", event => {
 	// Kick out the old service worker
@@ -66,3 +67,29 @@ self.addEventListener("fetch", event => {
 		})
 	);
 });
+
+self.addEventListener('beforeinstallprompt', (e) => {
+	// Prevent the mini-infobar from appearing on mobile
+	e.preventDefault();
+	// Stash the event so it can be triggered later.
+	deferredPrompt = e;
+
+	$('.install-section').each(function () {
+		$(this).show();
+	});
+});
+
+document.getElementById('btn-install').addEventListener('click', async () => {
+	// Show the install prompt
+	deferredPrompt.prompt();
+  });
+
+  window.addEventListener('appinstalled', () => {
+	// Hide the app-provided install promotion
+	// Hide the app provided install promotion
+	$('.install-section').each(function () {
+		$(this).hide();
+	});
+	// Clear the deferredPrompt so it can be garbage collected
+	deferredPrompt = null;
+  });

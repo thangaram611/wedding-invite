@@ -3,6 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,300,400italic,300italic,700,700italic);
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,300,700);
 @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Pacifico&display=swap');
+
 // Imports
 //@import "compass";
 @import "partials/typography";
@@ -1547,6 +1548,12 @@ p.heart {
   color: rgba(28, 54, 83, 0.8);
 }
 
+.name {
+  font-family: cursive;
+  font-weight: bold;
+  color: #503e42;
+}
+
 .venue-title {
   color: #3d4351;
   font-weight: 600;
@@ -1576,3 +1583,28 @@ section[id^="map-"] {
   }
 }
 
+a.about {
+  margin-right: 20px;
+}
+
+$len: 242.776657104492px;
+$time: 1s;
+#outline {
+  stroke-dasharray: $len*0.01, $len;
+  stroke-dashoffset: 0;
+  animation: anim $time linear infinite;
+}
+@keyframes anim {
+  12.5% {
+    stroke-dasharray: $len*0.14, $len;
+    stroke-dashoffset: -$len*0.11;
+  }
+  43.75% {
+    stroke-dasharray: $len*0.35, $len;
+    stroke-dashoffset: -$len*0.35;
+  }
+  100% {
+    stroke-dasharray: $len*0.01, $len;
+    stroke-dashoffset: -$len*0.99;
+  }
+}
