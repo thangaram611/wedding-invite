@@ -1,4 +1,44 @@
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    console.log('beforeinstallprompt is called');
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+
+    $('.install-section').each(function () {
+        $(this).show();
+    });
+});
+
+window.addEventListener('appinstalled', () => {
+    // Hide the app-provided install promotion
+    // Hide the app provided install promotion
+    $('.install-section').each(function () {
+        $(this).hide();
+    });
+    // Clear the deferredPrompt so it can be garbage collected
+    deferredPrompt = null;
+});
+
 $(document).ready(function () {
+
+    $('#btn-install').on('click', () => {
+        console.log('button clicked');
+        // Show the install prompt
+        if (deferredPrompt === null) {
+            alert("This device is not compatible!!!");
+        } else {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(({outcome}) => {
+                console.log('outcome is ::::: ', outcome);
+                if (outcome === 'accepted') {
+                    deferredPrompt = null;
+                }
+            });
+        }
+    })
 
     /***************** Waypoints ******************/
 
@@ -87,7 +127,7 @@ $(document).ready(function () {
     const share_bar = document.getElementsByClassName('share-bar');
     for (let i = 0; i < share_bar.length; i++) {
         const html = '<iframe allowtransparency="true" frameborder="0" scrolling="no" ' +
-            'title="Twitter share button"'+
+            'title="Twitter share button"' +
             'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;via=thangaram611&amp;hashtags=RashmiThangaram,wedding,invite&amp;count=horizontal" ' +
             'style="width:105px; height:21px;"> ' +
             '</iframe>' +

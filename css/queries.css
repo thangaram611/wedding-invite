@@ -101,6 +101,10 @@
         padding-right: 0;
     }
 
+    nav ul.member-actions li a.about{
+        padding-right: 0;
+    }
+
     nav .member-actions {
         position: static;
         padding: 0;

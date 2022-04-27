@@ -1,5 +1,4 @@
-const cacheName = "cachev1"; // Change value to force update
-let deferredPrompt;
+const cacheName = "cachev2"; // Change value to force update
 
 self.addEventListener("install", event => {
 	// Kick out the old service worker
@@ -8,29 +7,29 @@ self.addEventListener("install", event => {
 	event.waitUntil(
 		caches.open(cacheName).then(cache => {
 			return cache.addAll([
-				"/wedding-invite/",
-				"/wedding-invite/android-chrome-192x192.png", // Favicon, Android Chrome M39+ with 4.0 screen density
-				"/wedding-invite/android-chrome-512x512.png", // Favicon, Android Chrome M47+ Splash screen with 4.0 screen density
-				"/wedding-invite/apple-touch-icon.png", // Favicon, Apple default
-				"/wedding-invite/apple-touch-icon-60x60.png", // Apple iPhone, Non-retina with iOS7
-				"/wedding-invite/apple-touch-icon-76x76.png", // Apple iPad, Non-retina with iOS7
-				"/wedding-invite/apple-touch-icon-120x120.png", // Apple iPhone, Retina with iOS7
-				"/wedding-invite/apple-touch-icon-152x152.png", // Apple iPad, Retina with iOS7
-				"/wedding-invite/apple-touch-icon-180x180.png", // Apple iPhone 6 Plus with iOS8
-				"/wedding-invite/browserconfig.xml", // IE11 icon configuration file
-				"/wedding-invite/favicon.ico", // Favicon, IE and fallback for other browsers
-				"/wedding-invite/favicon-16x16.png", // Favicon, default
-				"/wedding-invite/favicon-32x32.png", // Favicon, Safari on Mac OS
-				"/wedding-invite/index.html", // Main HTML file
-				"/wedding-invite/img/logo.png", // Logo
-				"/wedding-invite/img/hero-min.webp", // hero
-				"/wedding-invite/js/scripts.min.js", // Main Javascript file
-				"/wedding-invite/manifest.json", // Manifest file
-				"/wedding-invite/maskable_icon.png", // Favicon, maskable https://web.dev/maskable-icon
-				"/wedding-invite/mstile-150x150.png", // Favicon, Windows 8 / IE11
-				"/wedding-invite/safari-pinned-tab.svg", // Favicon, Safari pinned tab
-				"/wedding-invite/share.jpg", // Social media sharing
-				"/wedding-invite/css/styles.min.css", // Main CSS file
+				// "/wedding-invite/",
+				// "/wedding-invite/android-chrome-192x192.png", // Favicon, Android Chrome M39+ with 4.0 screen density
+				// "/wedding-invite/android-chrome-512x512.png", // Favicon, Android Chrome M47+ Splash screen with 4.0 screen density
+				// "/wedding-invite/apple-touch-icon.png", // Favicon, Apple default
+				// "/wedding-invite/apple-touch-icon-60x60.png", // Apple iPhone, Non-retina with iOS7
+				// "/wedding-invite/apple-touch-icon-76x76.png", // Apple iPad, Non-retina with iOS7
+				// "/wedding-invite/apple-touch-icon-120x120.png", // Apple iPhone, Retina with iOS7
+				// "/wedding-invite/apple-touch-icon-152x152.png", // Apple iPad, Retina with iOS7
+				// "/wedding-invite/apple-touch-icon-180x180.png", // Apple iPhone 6 Plus with iOS8
+				// "/wedding-invite/browserconfig.xml", // IE11 icon configuration file
+				// "/wedding-invite/favicon.ico", // Favicon, IE and fallback for other browsers
+				// "/wedding-invite/favicon-16x16.png", // Favicon, default
+				// "/wedding-invite/favicon-32x32.png", // Favicon, Safari on Mac OS
+				// "/wedding-invite/index.html", // Main HTML file
+				// "/wedding-invite/img/logo.png", // Logo
+				// "/wedding-invite/img/hero-min.webp", // hero
+				// "/wedding-invite/js/scripts.min.js", // Main Javascript file
+				// "/wedding-invite/manifest.json", // Manifest file
+				// "/wedding-invite/maskable_icon.png", // Favicon, maskable https://web.dev/maskable-icon
+				// "/wedding-invite/mstile-150x150.png", // Favicon, Windows 8 / IE11
+				// "/wedding-invite/safari-pinned-tab.svg", // Favicon, Safari pinned tab
+				// "/wedding-invite/share.jpg", // Social media sharing
+				// "/wedding-invite/css/styles.min.css", // Main CSS file
 			]);
 		})
 	);
@@ -67,29 +66,3 @@ self.addEventListener("fetch", event => {
 		})
 	);
 });
-
-self.addEventListener('beforeinstallprompt', (e) => {
-	// Prevent the mini-infobar from appearing on mobile
-	e.preventDefault();
-	// Stash the event so it can be triggered later.
-	deferredPrompt = e;
-
-	$('.install-section').each(function () {
-		$(this).show();
-	});
-});
-
-document.getElementById('btn-install').addEventListener('click', async () => {
-	// Show the install prompt
-	deferredPrompt.prompt();
-  });
-
-  window.addEventListener('appinstalled', () => {
-	// Hide the app-provided install promotion
-	// Hide the app provided install promotion
-	$('.install-section').each(function () {
-		$(this).hide();
-	});
-	// Clear the deferredPrompt so it can be garbage collected
-	deferredPrompt = null;
-  });

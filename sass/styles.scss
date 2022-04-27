@@ -436,6 +436,7 @@ header {
 
       a {
         color: $txt-light;
+        padding-right: 30px;
 
         &:hover {
           color: $accent-color;
@@ -1453,7 +1454,7 @@ p.heart {
     justify-content: center;
     text-align: center;
     letter-spacing: 1px;
-    outline: solid 2px;
+    border: solid 2px;
     margin-left: 1vw;
 
     @media screen and (max-width: 576px) {
@@ -1583,10 +1584,6 @@ section[id^="map-"] {
   }
 }
 
-a.about {
-  margin-right: 20px;
-}
-
 $len: 242.776657104492px;
 $time: 1s;
 #outline {
@@ -1607,4 +1604,7 @@ $time: 1s;
     stroke-dasharray: $len*0.01, $len;
     stroke-dashoffset: -$len*0.99;
   }
+}
+.install-section {
+  display: none;
 }
