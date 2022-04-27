@@ -31,14 +31,14 @@ $(document).ready(function () {
             alert("This device is not compatible!!!");
         } else {
             deferredPrompt.prompt();
-            deferredPrompt.userChoice.then(({outcome}) => {
+            deferredPrompt.userChoice.then(({ outcome }) => {
                 console.log('outcome is ::::: ', outcome);
                 if (outcome === 'accepted') {
                     deferredPrompt = null;
                 }
             });
         }
-    })
+    });
 
     /***************** Waypoints ******************/
 
@@ -138,6 +138,22 @@ $(document).ready(function () {
 
     /********************** Embed youtube video *********************/
     $('.player').YTPlayer();
+    $('.video-bg').on('click', () => {
+        const desktopFallback = "https://youtube.com/watch?v=u9Z7JALkZ3s";
+        const app = "vnd.youtube://u9Z7JALkZ3s";
+
+        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            window.open(app, "_blank");
+        } else {
+            window.open(desktopFallback, "_blank");
+        }
+
+        function killPopup() {
+            window.removeEventListener('pagehide', killPopup);
+        }
+
+        window.addEventListener('pagehide', killPopup);
+    });
 
 
     /********************** Toggle Map Content **********************/

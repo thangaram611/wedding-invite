@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,300,400italic,300italic,700,700italic);
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,300,700);
-@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Pacifico&display=swap');
 
 // Imports
 //@import "compass";
@@ -871,6 +871,14 @@ Embed video
 ========================================================================== */
 .video-bg {
   height: 300px;
+  transition: transform .2s;
+
+  &:hover,
+  &:focus {
+      text-decoration: none;
+      cursor: pointer;
+      transform: scale(1.25);
+    }
 }
 
 .video-content {
@@ -1544,8 +1552,9 @@ p.heart {
 }
 
 .story {
-  font-family: 'Homemade Apple', cursive;
+  font-family: 'Handlee', cursive;
   line-height: 35px;
+  font-size: 1.5rem;
   color: rgba(28, 54, 83, 0.8);
 }
 
