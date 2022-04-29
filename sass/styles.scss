@@ -1006,7 +1006,7 @@ ul#countdown {
   position: relative;
   top: 50%;
   transform: translateY(-80%);
-  width: 50%;
+  width: 50vw;
   margin: 0 auto;
   padding: 15px 0 20px 0;
   color: #fff;
@@ -1021,7 +1021,6 @@ ul#countdown {
     padding: 0;
     display: inline-block;
     width: 25%;
-    font-size: 72px;
     font-size: 6vw;
     text-align: center;
 
