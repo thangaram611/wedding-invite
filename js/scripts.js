@@ -138,12 +138,18 @@ $(document).ready(function () {
 
     /********************** Embed youtube video *********************/
     $('.player').YTPlayer();
-    $('.video-bg').on('click', () => {
+    $('.video-bg').on('click', (e) => {
+        e.preventDefault();
         const desktopFallback = "https://youtube.com/watch?v=u9Z7JALkZ3s";
         const app = "vnd.youtube://u9Z7JALkZ3s";
 
         if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            window.open(app, "_blank");
+            const now = new Date().valueOf();
+            setTimeout(function () {
+                if (new Date().valueOf() - now > 100) return;
+                window.open(desktopFallback, "_blank");
+            }, 200);
+            window.location = app;
         } else {
             window.open(desktopFallback, "_blank");
         }
