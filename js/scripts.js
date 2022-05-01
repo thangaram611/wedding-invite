@@ -144,11 +144,9 @@ $(document).ready(function () {
         const app = "vnd.youtube://u9Z7JALkZ3s";
 
         if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            const now = new Date().valueOf();
             setTimeout(function () {
-                if (new Date().valueOf() - now > 100) return;
-                window.open(desktopFallback, "_blank");
-            }, 200);
+                window.location = desktopFallback;
+            }, 25);
             window.location = app;
         } else {
             window.open(desktopFallback, "_blank");
