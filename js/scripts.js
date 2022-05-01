@@ -145,9 +145,9 @@ $(document).ready(function () {
 
         if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
             setTimeout(function () {
-                window.location = desktopFallback;
+                window.location.href = desktopFallback;
             }, 25);
-            window.location = app;
+            window.location.href = app;
         } else {
             window.open(desktopFallback, "_blank");
         }
